@@ -1,6 +1,3 @@
-extern crate reqwest;
-extern crate select;
-
 use select::document::Document;
 
 fn main() {
@@ -8,7 +5,7 @@ fn main() {
 }
 
 fn scrap_url(url: &str) {
-    let mut resp = reqwest::get(url).unwrap();
+    let mut resp: reqwest::Response = reqwest::get(url);
     assert!(resp.status().is_success());
 
     Document::from_read(resp)
